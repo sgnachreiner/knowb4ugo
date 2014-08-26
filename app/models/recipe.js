@@ -2,7 +2,7 @@
 
 (function() {
 
-// Protects views where AngularJS is not loaded from errors
+// Protects views where angular is not loaded from errors
 if ( typeof angular == 'undefined' ) {
 	return;
 };
@@ -14,8 +14,11 @@ module.factory('RecipeRestangular', function(Restangular) {
 
   return Restangular.withConfig(function(RestangularConfigurer) {
 
-    RestangularConfigurer.setBaseUrl('http://localhost/data');
+    RestangularConfigurer.setBaseUrl('/data');
     RestangularConfigurer.setRequestSuffix('.json');
+    RestangularConfigurer.setRestangularFields({
+      id: "recipe_id"
+    });
 
   });
 

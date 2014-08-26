@@ -1,5 +1,5 @@
 {
-  "name": "steroids-angular-mpa2",
+  "name": "mySteroidsProject",
   "version": "0.0.1",
   "authors": [],
   "ignore": [
@@ -11,9 +11,10 @@
     "tests"
   ],
   "dependencies": {
-    "steroids-js": "3.1.x",
-    "angular": "1.2.16",
-    "angular-touch": "1.2.16",
-    "restangular": "1.3.1"
+    "steroids-js": "3.5.x",
+    "angular": "1.2.21",
+    "angular-route": "1.2.21",
+    "underscore": "1.5.1",
+    "restangular": "1.4.0"
   }
 }
