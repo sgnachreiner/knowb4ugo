@@ -1,4 +1,36 @@
 <div ng-controller="ShowCtrl" class="padding">
-  <h2>{{flights.name}}</h2>
-  <p>{{flights.description}}</p>
-</div>
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+var makeMap = function() {
+ 	map = new google.maps.Map(document.getElementById('map_canvas'), {
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: { lat: 40.8167, lng: -73.85 },
+        zoom: 8
+    });
+	        
+	var viewport_height = $(window).height() - 232;
+	var viewport_width = $(window).width() - 50;
+
+	$("#map_canvas").css("height", viewport_height);  //set the map canvas to have defined height and width of the device
+	$("#map_canvas").css("width", viewport_width);
+
+	var marker = new google.maps.Marker({
+    position: { lat: 40.8167, lng: -73.85 },
+    map: map,
+    title:"AA 100"
+});
+ 
+};
+function onDeviceReady() {
+    makeMap();
+}
+</script>
+  <center><h2>{{flights.name}}</h2></center>
+  <p>Tailnumber: {{flights.tailnumber}}</p>
+  <p>Route: {{flights.departureAirportFsCode}} --> {{flights.arrivalAirportFsCode}}</p>
+  <br>
+  <p><b>Status: {{flights.status}}</b></p>
+  <p>{{flights.statusExplanation}}</p>
+  <br>
+ <center><div id="map_canvas">Please check your internet connectivity and please allow us to access your location.</div></center>
+ </div>

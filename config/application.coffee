@@ -7,21 +7,21 @@ steroids.config.name = "flightProject"
 steroids.config.location = "http://localhost/views/flights/index.html"
 
 # ## Tab Bar
-# steroids.config.tabBar.enabled = true
-# steroids.config.tabBar.tabs = [
-#   {
-#     id: "index"
-#     title: "Index"
-#     icon: "icons/pill@2x.png"
-#     location: "http://localhost/index.html"
-#   },
-#   {
-#     id: "internet"
-#     title: "Internet"
-#     icon: "icons/telescope@2x.png"
-#     location: "http://www.google.com"
-#   }
-# ]
+steroids.config.tabBar.enabled = true
+steroids.config.tabBar.tabs = [
+	{
+	 id: "index"
+	 title: "Flights"
+	 icon: "icons/Airplane_silhouette.png"
+	 location: "http://localhost/views/flights/index.html"
+	},
+	{
+	 id: "internet"
+	 title: "Airports"
+	 icon: "icons/departures_pictogram.png"
+	 location: "http://localhost/views/weather/index.html"
+	}
+]
 
 # ## Preloads
 # steroids.config.preloads = [

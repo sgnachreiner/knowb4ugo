@@ -18,15 +18,36 @@
   <script src="/components/restangular/dist/restangular.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&api_key=AIzaSyDQG2Je4-rYCcoR0gOW64CA2geaA6zaNtY"></script>
-
-  <script src="/models/<%= yield.controller %>.js"></script>
-
-  <script src="/controllers/<%= yield.controller %>.js"></script>
 </head>
-<body ng-app="<%= yield.controller %>App" class="content">
-
-  <%= yield.view %>
-
+<body class="content">
+<br>
+<br>
+<br>
+<br>
+<center>
+<p style = "color: red">
+Weather
+<br>
+Thursday, November 6th
+<br>
+Mostly cloudy currently. A high of 29 degrees. Chance of snow high, with a lot of 15 degrees.
+</p>
+</center>
+  <ul class="list">
+    <li class="item item-icon-right">
+      <b>Chicago O'Hare (ORD)</b>
+      <br>
+      This airport is conjested due to delayed
+		flights and snow strom issues. If possible
+		plan your for an alternate day...
+    </li>
+    <li class="item item-icon-right">
+      <b>Newark Liberty International (EWR)</b>
+      <br>
+		Airport is small for the number of
+		flights it handles. Avoid over-night
+		stays in terminal due to safety...
+    </li>
+  </ul>
 </body>
 </html>

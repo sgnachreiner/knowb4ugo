@@ -1,12 +1,29 @@
 [
   {
     "id": 1,
-    "name": "First flights",
-    "description": "This is awesome."
+    "name": "AA 4334",
+    "airline": "American Airlines",
+    "tailnumber": "N950NN",
+    "departureAirportFsCode": "DCA",
+    "arrivalAirportFsCode": "EWR",
+    "timeOfLastLocation": "11:26:08pm",
+    "lastLocationLat": 40.8167,
+    "lastLocationLon": -73.85,
+    "status": "57 min late",
+    "statusExplanation": "Typically flights that connect in Newark Liberty International (EWR) have high delay issues."
   },
   {
-    "id": 2,
-    "name": "Second flights",
-    "description": "This is also okay."
-  }
+    "id": 3,
+    "name": "AA 6789",
+    "airline": "American Airlines",
+    "tailnumber": "N950NN",
+    "departureAirportFsCode": "ORD",
+    "arrivalAirportFsCode": "LGA",
+    "timeOfLastLocation": "11:26:08pm",
+    "lastLocationLat": 40.8167,
+    "lastLocationLon": -73.85,
+    "status": "Grounded; Snow",
+  "statusExplanation": "This flight has pending status due to weather conditions. An east coast snow storm dumped 5 inches."  
+}
 ]
+

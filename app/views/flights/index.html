@@ -1,13 +1,32 @@
 <div ng-controller="IndexCtrl">
   <ul class="list">
     <li class="item item-icon-right" ng-click="open(flights.id)" ng-repeat="flights in flightss">
-      Flights: {{ flights.name }}
+      <b>{{ flights.name }} ({{flights.status}})</b>
+      <br>
+      {{ flights.statusExplanation }}
       <i class="icon ion-ios7-arrow-right"></i>
     </li>
   </ul>
+  
+<!--
   Result: {{aaa}}<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
   <div class="result"></div>
-
-  
+<h1><center>AA 100</center></h1>
+<h3><br>
+<b>Airline:</b> American Airline
+<br>
+<b>Tailnumber:</b> N950NN
+<br>
+<br>
+ORD  LGA
+<br><br>
+Distance from airport: 
+<br><span class = "space">&nbsp;&nbsp;&nbsp;&nbsp;</span>500 miles
+<br>
+Time of last check-in: 
+<br><span class = "space">&nbsp;&nbsp;&nbsp;&nbsp;</span>11:26:08pm
+<br>
+Location of last check-in: 
+<br><span class = "space">&nbsp;&nbsp;&nbsp;&nbsp;</span>[lon: -73.85, lat: 40.8167]</h3> -->
 
 </div>
