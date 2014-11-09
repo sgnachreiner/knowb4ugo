@@ -1,9 +1,10 @@
-var flightApp = angular.module('flightApp', ['FlightModel', 'ngResource']);
 
+
+var flightApp = angular.module('flightApp', ['FlightModel']);
 
 // Index: http://localhost/views/flight/index.html
 
-flightApp.controller('IndexCtrl', function ($scope, FlightRestangular, $http, $templateCache) {
+flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
 
   // Helper function for opening new webviews
   $scope.open = function(id) {
@@ -15,28 +16,6 @@ flightApp.controller('IndexCtrl', function ($scope, FlightRestangular, $http, $t
   FlightRestangular.all('flight').getList().then( function(flights) {
     $scope.flights = flights;
   });
-
-  $.ajax({
-        type: 'GET',
-        url: 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/360/dep/2014/11/9?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&airport=ORD&maxPositions=2',
-        dataType: 'jsonp',
-        jsonpCallback: 'flightstatus',
-        success: function(response) { 
-                console.log(JSON.stringify(response));
-                // $('.result').html(JSON.stringify(response));
-              },   
-        error: function() {}
-      });
-
-  $http({method: 'JSONP', url: 'https://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero',cache: $templateCache}).
-        success(function(data, status) {
-          $scope.status = status;
-          $scope.data = data;
-        }).
-        error(function(data, status) {
-          $scope.data = data || "Request failed";
-          $scope.status = status;
-      });
 
   // Native navigation
   steroids.view.navigationBar.show("Flights");
@@ -60,3 +39,31 @@ flightApp.controller('ShowCtrl', function ($scope, $filter, FlightRestangular) {
   steroids.view.setBackgroundColor("#FFFFFF");
 
 });
+
+
+
+flightApp.controller('FetchController', ['$scope', '$http', '$templateCache',
+  function($scope, $http, $templateCache) {
+    $scope.method = 'JSONP';
+    $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/360/dep/2014/11/9?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&airport=ORD&maxPositions=2&callback=JSON_CALLBACK';
+
+    $scope.fetch = function() {
+      $scope.code = null;
+      $scope.response = null;
+
+      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+        success(function(data, status) {
+          $scope.status = status;
+          $scope.data = data;
+        }).
+        error(function(data, status) {
+          $scope.data = data || "Request failed";
+          $scope.status = status;
+      });
+    };
+
+    $scope.updateModel = function(method, url) {
+      $scope.method = method;
+      $scope.url = url;
+    };
+  }]);
