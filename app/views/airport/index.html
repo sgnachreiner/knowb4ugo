@@ -1,8 +1,35 @@
 <div ng-controller="IndexCtrl">
-  <ul class="list">
+<!--   <ul class="list">
     <li class="item item-icon-right" ng-click="open(airport.id)" ng-repeat="airport in airports">
       Airport: {{ airport.name }}
       <i class="icon ion-ios7-arrow-right"></i>
     </li>
+  </ul> -->
+
+  <center>
+	<p style = "color: red">
+	Weather
+	<br>
+	Thursday, November 6th
+	<br>
+	Mostly cloudy currently. A high of 29 degrees. Chance of snow high, with a lot of 15 degrees.
+	</p>
+  </center>
+  <ul class="list">
+    <li class="item item-icon-right">
+      <b>Chicago O'Hare (ORD)</b>
+      <br>
+      This airport is conjested due to delayed
+		flights and snow strom issues. If possible
+		plan your for an alternate day...
+    </li>
+    <li class="item item-icon-right">
+      <b>Newark Liberty International (EWR)</b>
+      <br>
+		Airport is small for the number of
+		flights it handles. Avoid over-night
+		stays in terminal due to safety...
+    </li>
   </ul>
 </div>
+

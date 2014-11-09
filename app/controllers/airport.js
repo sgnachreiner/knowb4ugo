@@ -17,7 +17,7 @@ airportApp.controller('IndexCtrl', function ($scope, AirportRestangular) {
   });
 
   // Native navigation
-  steroids.view.navigationBar.show("Airport index");
+  steroids.view.navigationBar.show("Airports");
   steroids.view.setBackgroundColor("#FFFFFF");
 
 });
