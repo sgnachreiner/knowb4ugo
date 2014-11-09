@@ -1,9 +1,9 @@
-var flightApp = angular.module('flightApp', ['FlightModel']);
+var flightApp = angular.module('flightApp', ['FlightModel', 'ngResource']);
 
 
 // Index: http://localhost/views/flight/index.html
 
-flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
+flightApp.controller('IndexCtrl', function ($scope, FlightRestangular, $http, $templateCache) {
 
   // Helper function for opening new webviews
   $scope.open = function(id) {
@@ -23,13 +23,23 @@ flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
         jsonpCallback: 'flightstatus',
         success: function(response) { 
                 console.log(JSON.stringify(response));
-                $('.result').html(JSON.stringify(response));
+                // $('.result').html(JSON.stringify(response));
               },   
         error: function() {}
       });
 
+  $http({method: 'JSONP', url: 'https://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero',cache: $templateCache}).
+        success(function(data, status) {
+          $scope.status = status;
+          $scope.data = data;
+        }).
+        error(function(data, status) {
+          $scope.data = data || "Request failed";
+          $scope.status = status;
+      });
+
   // Native navigation
-  steroids.view.navigationBar.show("Flight index");
+  steroids.view.navigationBar.show("Flights");
   steroids.view.setBackgroundColor("#FFFFFF");
 
 });

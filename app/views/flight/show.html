@@ -1,4 +1,10 @@
 <div ng-controller="ShowCtrl" class="padding">
-  <h2>{{flight.name}}</h2>
-  <p>{{flight.description}}</p>
+  <center><h2>{{flight.name}}</h2></center>
+  <p>Tailnumber: {{flight.tailnumber}}</p>
+  <p>Route: {{flight.departureAirportFsCode}} --> {{flight.arrivalAirportFsCode}}</p>
+  <br>
+  <p><b>Status: {{flight.status}}</b></p>
+  <p>{{flight.statusExplanation}}</p>
+  <br>
+ <center><div id="map_canvas">Please check your internet connectivity and please allow us to access your location.</div></center>
 </div>
