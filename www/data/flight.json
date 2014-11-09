@@ -1,12 +1,32 @@
 [
   {
     "id": 1,
-    "name": "First flight",
-    "description": "This is awesome."
+    "number": "AA 100",
+    "tailnumber": "N438NN",
+    "src_airport": "ORD",
+    "dst_airport": "JFK",
+    "prev_number": "AA 100",
+    "est_arrival": "11:30pm",
+    "act_arrival": "11:25pm",
+    "est_departure": "12:30pm",
+    "act_departure": "12:25pm",
+    "location": "lat: 50 lng: 50",
+    "speed": "500mph",
+    "time": "12:00pm"
   },
   {
     "id": 2,
-    "name": "Second flight",
-    "description": "This is also okay."
+    "number": "AA 200",
+    "tailnumber": "N438NN",
+    "src_airport": "ORD",
+    "dst_airport": "JFK",
+    "prev_number": "AA 100",
+    "est_arrival": "11:30pm",
+    "act_arrival": "11:25pm",
+    "est_departure": "12:30pm",
+    "act_departure": "12:25pm",
+    "location": "lat: 50 lng: 50",
+    "speed": "500mph",
+    "time": "12:00pm"
   }
 ]
