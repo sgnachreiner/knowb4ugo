@@ -16,5 +16,6 @@
     "angular-route": "1.2.21",
     "underscore": "1.5.1",
     "restangular": "1.4.0"
+    
   }
 }

@@ -16,6 +16,18 @@ flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
     $scope.flights = flights;
   });
 
+  $.ajax({
+        type: 'GET',
+        url: 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/360/dep/2014/11/9?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&airport=ORD&maxPositions=2',
+        dataType: 'jsonp',
+        jsonpCallback: 'flightstatus',
+        success: function(response) { 
+                console.log(JSON.stringify(response));
+                $('.result').html(JSON.stringify(response));
+              },   
+        error: function() {}
+      });
+
   // Native navigation
   steroids.view.navigationBar.show("Flight index");
   steroids.view.setBackgroundColor("#FFFFFF");
