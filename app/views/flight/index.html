@@ -1,0 +1,8 @@
+<div ng-controller="IndexCtrl">
+  <ul class="list">
+    <li class="item item-icon-right" ng-click="open(flight.id)" ng-repeat="flight in flights">
+      Flight: {{ flight.name }}
+      <i class="icon ion-ios7-arrow-right"></i>
+    </li>
+  </ul>
+</div>
