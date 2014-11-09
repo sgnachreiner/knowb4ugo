@@ -11,12 +11,12 @@ steroids.config.tabBar.enabled = true
 steroids.config.tabBar.tabs = [
 	{
 	 title: "Flights"
-	 icon: "icons/pill@2x.png"
+	 icon: "icons/Airplane_silhouette.png"
 	 location: "http://localhost/views/flight/index.html"
 	},
 	{
 	 title: "Airport"
-	 icon: "icons/telescope@2x.png"
+	 icon: "icons/departures_pictogram.png"
 	 location: "http://localhost/views/airport/index.html"
 	}
 ]
