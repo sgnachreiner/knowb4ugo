@@ -4,22 +4,23 @@
 steroids.config.name = "My New Application"
 
 # -- Initial Location --
-steroids.config.location = "http://localhost/views/flight/index.html"
+#steroids.config.location = "http://localhost/views/flight/index.html"
+steroids.config.location = "http://localhost/splash.html"
 
 # -- Tab Bar --
-steroids.config.tabBar.enabled = true
-steroids.config.tabBar.tabs = [
-	{
-	 title: "Flights"
-	 icon: "icons/Airplane_silhouette@2x.png"
-	 location: "http://localhost/views/flight/index.html"
-	},
-	{
-	 title: "Airport"
-	 icon: "icons/departures_pictogram@2x.png"
-	 location: "http://localhost/views/airport/index.html"
-	}
-]
+#steroids.config.tabBar.enabled = true
+#steroids.config.tabBar.tabs = [
+#	{
+#	 title: "Flights"
+#	 icon: "icons/Airplane_silhouette@2x.png"
+#	 location: "http://localhost/views/flight/index.html"
+#	},
+#	{
+#	 title: "Airport"
+#	 icon: "icons/departures_pictogram@2x.png"
+#	 location: "http://localhost/views/airport/index.html"
+#	}
+#]
 
 # steroids.config.tabBar.tintColor = "#000000"
 # steroids.config.tabBar.tabTitleColor = "#00aeef"
