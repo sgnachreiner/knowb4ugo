@@ -6,7 +6,9 @@
     "tailnumber": "N950NN",
     "departureAirportFsCode": "DCA",
     "arrivalAirportFsCode": "EWR",
-    "timeOfLastLocation": "11:26:08pm",
+    "reportedDepartureTime": "12:00pm",
+    "estimatedDepartureTime": "12:20pm",
+    "timeOfLastLocation": "11:26pm",
     "lastLocationLat": 40.8167,
     "lastLocationLon": -73.85,
     "status": "57 min late",
@@ -19,11 +21,17 @@
     "tailnumber": "N950NN",
     "departureAirportFsCode": "ORD",
     "arrivalAirportFsCode": "LGA",
+
     "timeOfLastLocation": "11:26:02pm",
+
+    "reportedDepartureTime": "12:00pm",
+    "estimatedDepartureTime": "12:20pm",
+    "timeOfLastLocation": "11:26:08pm",
+
     "lastLocationLat": 40.8167,
     "lastLocationLon": -73.85,
     "status": "Grounded; Snow",
-  "statusExplanation": "This flight has pending status due to weather conditions. An east coast snow storm dumped 5 inches."  
+    "statusExplanation": "This flight has pending status due to weather conditions. An east coast snow storm dumped 5 inches."  
 }
 ]
 

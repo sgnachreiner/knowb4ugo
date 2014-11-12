@@ -1,12 +1,16 @@
 [
   {
     "id": 1,
-    "name": "First airport",
-    "description": "This is awesome."
+    "name": "O'Hare International Aiport",
+    "fsCode": "ORD",
+    "temperature": "50",
+    "condition": "Cloudy"
   },
   {
     "id": 2,
-    "name": "Second airport",
-    "description": "This is also okay."
+    "name": "Newark Liberty International Airport",
+    "fsCode": "EWR",
+    "temperature": "70",
+    "condition": "Sunny"
   }
 ]

@@ -1,12 +1,18 @@
 <div ng-controller="IndexCtrl">
   <ul class="list">
     <li class="item item-icon-right" ng-click="open(flight.id)" ng-repeat="flight in flights">
-      Flight: {{ flight.name }}
+      <h2>{{ flight.name }}</h2>
+      <br>
+      Scheduled Departure: {{ flight.reportedDepartureTime }}
+      <br>
+      Estimated Departure: {{ flight.estimatedDepartureTime }}
       <i class="icon ion-ios7-arrow-right"></i>
     </li>
   </ul>
-</div>
-
+  
+<!--<br>
+<br>
+<br>
 <pre>http status code: {{status}}</pre>
 <pre>http response data: {{data}}</pre>
 
@@ -15,5 +21,7 @@
 <button id="fetchbtn" ng-click="fetch()">fetch</button><br>
 
 <pre>http status code: {{status}}</pre>
-<pre>http response data: {{data}}</pre>
+<pre>http response data: {{data}}</pre> -->
+
+
 </div>
