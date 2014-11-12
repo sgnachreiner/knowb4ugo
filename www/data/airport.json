@@ -3,14 +3,20 @@
     "id": 1,
     "name": "O'Hare International Aiport",
     "fsCode": "ORD",
-    "temperature": "50",
+    "temperature": {
+      "high":"50",
+      "low":"45"
+      },
     "condition": "Cloudy"
   },
   {
     "id": 2,
     "name": "Newark Liberty International Airport",
     "fsCode": "EWR",
-    "temperature": "70",
+    "temperature": {
+      "high":"70",
+      "low":"62"
+      },
     "condition": "Sunny"
   }
 ]

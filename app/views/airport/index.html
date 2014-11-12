@@ -3,7 +3,7 @@
     <li class="item item-icon-right" ng-click="open(airport.id)" ng-repeat="airport in airports">
       <b>{{airport.name}}</b>
       <br>
-      {{airport.temperature}}&deg;F
+      {{airport.temperature.high}}&deg;F |  {{airport.temperature.low}}&deg;F
       <i class="icon ion-ios7-arrow-right"></i>
     </li>
   </ul>

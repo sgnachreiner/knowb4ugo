@@ -2,4 +2,9 @@
   <center><h2>{{flight.name}}</h2></center>
   <br>
   <p>Route: {{flight.departureAirportFsCode}} --> {{flight.arrivalAirportFsCode}}</p>
+  <p>Plane Model: {{flight.model}}
+  <p>Departure Time: Reported - {{flight.reportedDepartureTime}} Estimated - {{flight.estimatedDepartureTime}}</p>
+  <p>Arrival Time: Reported - {{flight.reportedArrivalTime}} Estimated - {{flight.estimatedArrivalTime}}</p>
+  <p>Historical Performance: {{Math.floor((1-(flight.performance.delayed/flight.performance.total))*100)}}% On Time <br/> </p>
+
 </div>

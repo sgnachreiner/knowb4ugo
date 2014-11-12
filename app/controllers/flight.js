@@ -28,6 +28,7 @@ flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
 
 flightApp.controller('ShowCtrl', function ($scope, $filter, FlightRestangular) {
 
+  $scope.Math = window.Math;
   // Fetch all objects from the local JSON (see app/models/flight.js)
   FlightRestangular.all('flight').getList().then( function(flights) {
     // Then select the one based on the view's id query parameter
