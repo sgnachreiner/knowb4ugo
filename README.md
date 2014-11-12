@@ -1,5 +1,7 @@
 # Steroids AngularJS MPA Example App
 
+FARGO
+
 This app is meant to showcase the Steroids multi-page app (MPA) architecture with AngularJS. It is meant to be run as a Steroids project.
 
 ## Running the app with Steroids
