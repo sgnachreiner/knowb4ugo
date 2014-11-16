@@ -1,5 +1,27 @@
 <div ng-controller="IndexCtrl">
-  <ul class="list">
+
+<div class="card">
+  <div class="item item-text-wrap" ng-click="open(flight.id)" ng-repeat="flight in flights">
+    <div class = "row">
+      <div class = "col" style = "background-color:red">
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+      <div class = "col col-90">
+        <b>{{ flight.date }}</b>
+        <br>
+        Scheduled Departure: <b>{{ flight.reportedDepartureTime }}</b>
+        <br>
+        Estimated Departure: <b>{{ flight.estimatedDepartureTime }}</b>
+        <br>
+        <b>{{flight.departureAirportFsCode}} > {{flight.arrivalAirportFsCode}}</b>
+      </div>
+    </div>
+  </div>
+</div>
+<!--   <ul class="list">
     <li class="item item-icon-right" ng-click="open(flight.id)" ng-repeat="flight in flights">
       <h2>{{ flight.name }}</h2>
       <br>
@@ -8,13 +30,13 @@
       Estimated Departure: {{ flight.estimatedDepartureTime }}
       <i class="icon ion-ios7-arrow-right"></i>
     </li>
-  </ul>
+  </ul> -->
   
 
 
 </div>
 
-<div ng-controller="FetchController">
+<!-- <div ng-controller="FetchController">
 <input type="text" ng-model="url" size="80"/>
 <button id="fetchbtn" ng-click="fetch()">fetch</button><br>
 
@@ -30,5 +52,5 @@
 
 
 
-</div>
+</div> -->
 

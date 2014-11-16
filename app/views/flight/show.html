@@ -1,10 +1,41 @@
 <div ng-controller="ShowCtrl" class="padding">
-  <center><h2>{{flight.name}}</h2></center>
+  <h2>{{flight.name}}</h2> 
+  <p>{{flight.departureAirportFsCode}} > {{flight.arrivalAirportFsCode}}</p>
   <br>
-  <p>Route: {{flight.departureAirportFsCode}} --> {{flight.arrivalAirportFsCode}}</p>
-  <p>Plane Model: {{flight.model}}
-  <p>Departure Time: Reported - {{flight.reportedDepartureTime}} Estimated - {{flight.estimatedDepartureTime}}</p>
-  <p>Arrival Time: Reported - {{flight.reportedArrivalTime}} Estimated - {{flight.estimatedArrivalTime}}</p>
-  <p>Historical Performance: {{Math.floor((1-(flight.performance.delayed/flight.performance.total))*100)}}% On Time <br/> </p>
-
+  <div class="card">
+  	<div class="item item-text-wrap">
+	  	<h3>Departure</h3>
+	  	<div class = "row">
+	  		<div class = "col-50">
+	  			<p>They Say</p>
+	  			<h3>{{flight.reportedDepartureTime}}</h3>
+	  		</div>
+	  		<div class = "col-50">
+	  			<p>We Say</p>
+	  			<h3>{{flight.estimatedDepartureTime}}</h3>
+	  		</div>
+	  	</div>
+	</div>
+  </div>
+  <div class="card">
+  	<div class="item item-text-wrap">
+  		<h3>Arrival</h3>
+	  	<div class = "row">
+	  		<div class = "col-50">
+	  			<p>They Say</p>
+	  			<h3>{{flight.reportedArrivalTime}}</h3>
+	  		</div>
+	  		<div class = "col-50">
+	  			<p>We Say</p>
+	  			<h3>{{flight.estimatedArrivalTime}}</h3>
+	  		</div>
+	  	</div>
+	</div>
+  </div>
+  <div class="card">
+  	<div class="item item-text-wrap">
+  		<p><b>Aircraft Type:</b> {{flight.model}}
+		<p><b>Historical On Time Performance: </b>{{Math.floor((1-(flight.performance.delayed/flight.performance.total))*100)}}%</p>
+	</p>
+  </div>
 </div>

@@ -9,10 +9,7 @@
   <script src="/components/steroids-js/steroids.js"></script>
 </head>
 <body>
-  <div class="bar bar-header bar-calm">
-    <h1 class="title">Fargo</h1>
-  </div>
-  <div class ="col" style = "height: 50%;"><img style = "max-width: 100%; height: auto; padding-top: 20%;"src = "icons/splashHeader.png"></div>
+  <div class ="col" style = "height: 50%;"><img style = "max-width: 100%; height: auto; padding-top: 20%;"src = "icons/splashHeader@2x.png"></div>
   <div style = "height: 50%">
     <div class = "row" style = "height: 50%">
       <div class = "col" style = "height: 50%">
@@ -26,9 +23,21 @@
         </div>
       </div>
       <div class = "col" style = "height: 50%">
+        <div class = "row">
+          <div class = "col"><center><p style = "color: grey">Alerts</p></center></div>
+        </div>
+        <div class = "row">
+          <div class = "col" style = "height: 100%">
+            <center><img style="max-height: 100%; width: auto; opacity: 0.1;" src = "icons/Alerts@2x.png"></center>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "row" style = "height: 50%">
+      <div class = "col" style = "height: 50%">
         <a style = "text-align: center;" onclick="showFlights()">
           <div class = "row">
-            <div class = "col"><center><b>Flight Checker</b></center></div>
+            <div class = "col"><center><b>Your Flights</b></center></div>
           </div>
           <div class = "row">
             <div class = "col" style = "height: 100%">
@@ -37,29 +46,17 @@
           </div>
         </a>
       </div>
-    </div>
-    <div class = "row" style = "height: 50%">
       <div class = "col" style = "height: 50%">
-        <a style = "text-align: center" onclick = "showAirports()">
+        <a style = "text-align: center;" onclick="showAirports()">
           <div class = "row">
-            <div class = "col"><b>Alerts</b></div>
+            <div class = "col"><center><b>Your Airports</b></center></div>
           </div>
           <div class = "row">
             <div class = "col" style = "height: 100%">
-              <center><img style="max-height: 100%; width: auto;" src = "icons/Alerts@2x.png"></center>
+              <center><img style="max-height: 100%; width: auto;" src = "icons/Configurations@2x.png"></center>
             </div>
           </div>
         </a>
-      </div>
-      <div class = "col" style = "height: 50%">
-        <div class = "row">
-          <div class = "col"><center><p style = "color: grey">Configurations</p></center></div>
-        </div>
-        <div class = "row">
-          <div class = "col" style = "height: 100%">
-            <center><img style="max-height: 100%; width: auto; opacity: 0.1;" src = "icons/Configurations@2x.png"></center>
-          </div>
-        </div>
       </div>
     </div>
   </div>

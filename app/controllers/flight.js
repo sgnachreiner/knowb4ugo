@@ -33,10 +33,10 @@ flightApp.controller('ShowCtrl', function ($scope, $filter, FlightRestangular) {
   FlightRestangular.all('flight').getList().then( function(flights) {
     // Then select the one based on the view's id query parameter
     $scope.flight = $filter('filter')(flights, {id: steroids.view.params['id']})[0];
+    steroids.view.navigationBar.show($scope.flight.name);
   });
 
   // Native navigation
-  steroids.view.navigationBar.show("Flight: " + steroids.view.params.id );
   steroids.view.setBackgroundColor("#FFFFFF");
 
 });
