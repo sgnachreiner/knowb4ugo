@@ -46,7 +46,9 @@ flightApp.controller('ShowCtrl', function ($scope, $filter, FlightRestangular) {
 flightApp.controller('FetchController', ['$scope', '$http', '$templateCache',
   function($scope, $http, $templateCache) {
     $scope.method = 'JSONP';
-    $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/360/dep/2014/11/9?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&airport=ORD&maxPositions=2&callback=JSON_CALLBACK';
+    $scope.flightNumber = '360';
+    $scope.date = '2014/11/9';
+    $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&airport=ORD&maxPositions=2&callback=JSON_CALLBACK';
 
     $scope.fetch = function() {
       $scope.code = null;
