@@ -9,6 +9,7 @@ function showAirports() {
 }
 
 function showForm() {
-  var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+  //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+  var webView = new steroids.views.WebView("http://localhost/newsfeed.html");
   steroids.layers.push(webView);
 }
