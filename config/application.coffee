@@ -5,7 +5,7 @@ steroids.config.name = "My New Application"
 
 # -- Initial Location --
 #steroids.config.location = "http://localhost/views/flight/index.html"
-steroids.config.location = "http://localhost/splash.html"
+steroids.config.location = "http://localhost/index.html"
 
 # -- Tab Bar --
 #steroids.config.tabBar.enabled = true

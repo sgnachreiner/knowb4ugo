@@ -11,16 +11,25 @@
   <script src="/components/steroids-js/steroids.js"></script>
 
   <script src="/components/angular/angular.min.js"></script>
-  <script src="/components/angular-touch/angular-touch.min.js"></script>
+  <script src="/components/angular-cookies/angular-cookies.min.js"></script>
+
+  <script src="/components/angularLocalStorage/src/angularLocalStorage.js"></script>
+
+  <script src="/components/jquery/dist/jquery.min.js"></script>
 
   <script src="/components/lodash/dist/lodash.min.js"></script>
   <script src="/components/restangular/dist/restangular.min.js"></script>
 
-  <script src="/models/<%= yield.controller %>.js"></script>
 
-  <script src="/controllers/<%= yield.controller %>.js"></script>
+  <script src="/models/flight.js"></script>
+  <script src="/models/airport.js"></script>
+
+  <script src="/app.js"></script>
+  <script src="/controllers/airport.js"></script>
+
+
 </head>
-<body ng-app="<%= yield.controller %>App" class="content">
+<body ng-app="myApp" class="content">
 
   <%= yield.view %>
 

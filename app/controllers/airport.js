@@ -1,9 +1,13 @@
-var airportApp = angular.module('airportApp', ['AirportModel']);
-
-
 // Index: http://localhost/views/airport/index.html
 
-airportApp.controller('IndexCtrl', function ($scope, AirportRestangular) {
+app.controller('IndexCtrl', function ($scope, AirportRestangular, storage) {
+
+
+  // storage.set('airportArrayString','{message:"hello"}');
+
+  // storage.bind($scope,'airportArrayString');
+
+  // $scope.airportArray = JSON.parse($scope.airportArrayString)
 
   // Helper function for opening new webviews
   $scope.open = function(id) {
@@ -25,7 +29,7 @@ airportApp.controller('IndexCtrl', function ($scope, AirportRestangular) {
 
 // Show: http://localhost/views/airport/show.html?id=<id>
 
-airportApp.controller('ShowCtrl', function ($scope, $filter, AirportRestangular) {
+app.controller('ShowCtrl', function ($scope, $filter, AirportRestangular, storage) {
   var fsCode;
   // Fetch all objects from the local JSON (see app/models/airport.js)
   AirportRestangular.all('airport').getList().then( function(airports) {

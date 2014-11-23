@@ -1,10 +1,6 @@
-
-
-var flightApp = angular.module('flightApp', ['FlightModel']);
-
 // Index: http://localhost/views/flight/index.html
 
-flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
+app.controller('IndexCtrl', function ($scope, FlightRestangular, storage) {
 
   // Helper function for opening new webviews
   $scope.open = function(id) {
@@ -26,7 +22,7 @@ flightApp.controller('IndexCtrl', function ($scope, FlightRestangular) {
 
 // Show: http://localhost/views/flight/show.html?id=<id>
 
-flightApp.controller('ShowCtrl', function ($scope, $filter, FlightRestangular) {
+app.controller('ShowCtrl', function ($scope, $filter, FlightRestangular, storage) {
 
   $scope.Math = window.Math;
   // Fetch all objects from the local JSON (see app/models/flight.js)
@@ -43,33 +39,33 @@ flightApp.controller('ShowCtrl', function ($scope, $filter, FlightRestangular) {
 
 
 
-flightApp.controller('FetchController', ['$scope', '$http', '$templateCache', '$filter',
-  function($scope, $http, $templateCache, $filter) {
-    $scope.method = 'JSONP';
+// app.controller('FetchController', ['$scope', '$http', '$templateCache', '$filter',
+//   function($scope, $http, $templateCache, $filter) {
+//     $scope.method = 'JSONP';
     
 
-    $scope.fetch = function() {
-      $scope.flights = JSON.parse(localStorage.getItem('flightArray'));
-      $scope.flightNumber = $scope.flights[0].flightNumber;
-      $scope.date = $filter('date')($scope.flights[0].departureDate, "yyyy/MM/dd");
-      $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
+//     $scope.fetch = function() {
+//       $scope.flights = JSON.parse(localStorage.getItem('flightArray'));
+//       $scope.flightNumber = $scope.flights[0].flightNumber;
+//       $scope.date = $filter('date')($scope.flights[0].departureDate, "yyyy/MM/dd");
+//       $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
 
-      $scope.code = null;
-      $scope.response = null;
+//       $scope.code = null;
+//       $scope.response = null;
 
-      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
-        success(function(data, status) {
-          $scope.status = status;
-          $scope.data = data;
-        }).
-        error(function(data, status) {
-          $scope.data = data || "Request failed";
-          $scope.status = status;
-      });
-    };
+//       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+//         success(function(data, status) {
+//           $scope.status = status;
+//           $scope.data = data;
+//         }).
+//         error(function(data, status) {
+//           $scope.data = data || "Request failed";
+//           $scope.status = status;
+//       });
+//     };
 
-    $scope.updateModel = function(method, url) {
-      $scope.method = method;
-      $scope.url = url;
-    };
-  }]);
+//     $scope.updateModel = function(method, url) {
+//       $scope.method = method;
+//       $scope.url = url;
+//     };
+//   }]);
