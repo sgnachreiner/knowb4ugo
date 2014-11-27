@@ -24,15 +24,14 @@
   <script src="/models/airport.js"></script>
 
   <script src="/app.js"></script>
+  <script src="/controllers/flight.js"></script>
 </head>
 <body ng-controller="FetchCtrl">
-
-
   {{flights}}
 
   {{data}}
-  
-  <button class="button button-full button-positive" onClick="showForm();">
+
+  <button class="button button-full button-positive" ng-click="showForm()">
     Add Flight
   </button>
   <div class="card">
@@ -107,12 +106,5 @@
     </div>
   </div>
 
-<script>
-function showForm() {
-  //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
-  var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
-  steroids.layers.push(webView);
-}
-</script>
 </body>
 </html>

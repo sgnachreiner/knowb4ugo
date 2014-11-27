@@ -61,4 +61,10 @@ app.controller('FetchCtrl', ['$scope', '$http', '$templateCache', '$filter', '$r
       });
     };
 
+    $scope.showForm = function() {
+      //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+      var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+      steroids.layers.push(webView);
+    }
+
   }]);
