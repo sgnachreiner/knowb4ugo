@@ -39,33 +39,26 @@ app.controller('ShowCtrl', function ($scope, $filter, FlightRestangular, storage
 
 
 
-// app.controller('FetchController', ['$scope', '$http', '$templateCache', '$filter',
-//   function($scope, $http, $templateCache, $filter) {
-//     $scope.method = 'JSONP';
+app.controller('FetchCtrl', ['$scope', '$http', '$templateCache', '$filter', '$rootScope', function($scope, $http, $templateCache, $filter, $rootScope) {
+    $scope.method = 'JSONP';
     
+    $scope.fetch = function(flightquery) {
+      $scope.flightNumber = flightquery.flightNumber;
+      $scope.date = $filter('date')(flightquery.departureDate, "yyyy/MM/dd");
+      $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
 
-//     $scope.fetch = function() {
-//       $scope.flights = JSON.parse(localStorage.getItem('flightArray'));
-//       $scope.flightNumber = $scope.flights[0].flightNumber;
-//       $scope.date = $filter('date')($scope.flights[0].departureDate, "yyyy/MM/dd");
-//       $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
+      $scope.code = null;
+      $scope.response = null;
 
-//       $scope.code = null;
-//       $scope.response = null;
+      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+        success(function(data, status) {
+          $scope.status = status;
+          $scope.data = data;
+        }).
+        error(function(data, status) {
+          $scope.data = data || "Request failed";
+          $scope.status = status;
+      });
+    };
 
-//       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
-//         success(function(data, status) {
-//           $scope.status = status;
-//           $scope.data = data;
-//         }).
-//         error(function(data, status) {
-//           $scope.data = data || "Request failed";
-//           $scope.status = status;
-//       });
-//     };
-
-//     $scope.updateModel = function(method, url) {
-//       $scope.method = method;
-//       $scope.url = url;
-//     };
-//   }]);
+  }]);
