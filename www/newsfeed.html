@@ -5,6 +5,7 @@
   <title>Newsfeed Page</title>
   <link rel="stylesheet" href="/components/ionic/css/ionic.min.css" />
   <link rel="stylesheet" href="/stylesheets/application.css" />
+  <link rel="stylesheet" href="/stylesheets/newsfeed.css" />
 
   <script src="http://localhost/cordova.js"></script>
   <script src="/components/steroids-js/steroids.js"></script>
@@ -19,14 +20,18 @@
   <script src="/components/restangular/dist/restangular.min.js"></script>
 </head>
 <body>
-  <button class="button button-full button-positive" onClick="showForm();">
-    Add Flight
-  </button>
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>Traffic</h3>
+      <h3>Getting to ORD</h3>
       <div class="row">
-        <p>30min to airport</p>
+        <div class="col col-90 col-offset-10">
+          <p>38 minute drive from current location.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>35 minutes without traffic.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +39,14 @@
     <div class="item item-text-wrap">
       <h3>Weather at ORD</h3>
       <div class="row">
-        <p>25&deg; F<br>Icy, snow showers</p>
+        <div class="col col-90 col-offset-10">
+          <p>25&deg; F</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>Icy, snow showers</p>
+        </div>
       </div>
     </div>
   </div>
@@ -42,8 +54,11 @@
     <div class="item item-text-wrap">
       <h3>TSA</h3>
       <div class="row">
-        <p>10min security line</p>
+        <div class="col col-90 col-offset-10">
+          <p>10min security line</p>
+        </div>
       </div>
+    </div>
     </div>
   </div>
   <div class="card">
@@ -92,6 +107,11 @@
         <p>50&deg; F<br>Rainy, drizzle</p>
       </div>
     </div>
+  </div>
+  <div class="buttondad"> 
+    <button id="addflight" class="button button-full button-positive" onClick="showForm();">
+    Add Another Flight
+    </button>
   </div>
 <script>
 function showForm() {
