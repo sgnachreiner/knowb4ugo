@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="formApp">
+<html ng-app="myApp">
 <head >
   <meta charset="utf8">
   <title>Steroids App</title>
@@ -11,13 +11,20 @@
   <script src="/components/steroids-js/steroids.js"></script>
 
   <script src="/components/angular/angular.min.js"></script>
-  <script src="/components/angular-touch/angular-touch.min.js"></script>
+  <script src="/components/angular-cookies/angular-cookies.min.js"></script>
+
+  <script src="/components/angularLocalStorage/src/angularLocalStorage.js"></script>
+
+  <script src="/components/jquery/dist/jquery.min.js"></script>
 
   <script src="/components/lodash/dist/lodash.min.js"></script>
   <script src="/components/restangular/dist/restangular.min.js"></script>
 
-  <script src="/components/jquery/dist/jquery.min.js"></script>
 
+  <script src="/models/flight.js"></script>
+  <script src="/models/airport.js"></script>
+
+  <script src="/app.js"></script>
   <script src="javascripts/flightnoform.js"></script>
 
 </head>
@@ -26,12 +33,12 @@
   <div class="list">
     <label class="item item-input item-stacked-label">
       <span class="input-label">Flight Number</span>
-      <input type="text" ng-model="flightNum" placeholder="AA1111">
+      <input type="text" ng-model="query.flightNum" placeholder="AA1111">
     </label>
 
     <label class="item item-input item-stacked-label">
       <span class="input-label">Departure Date</span>
-      <input type="date" ng-model="flightDate" placeholder="yyyy/MM/dd">
+      <input type="date" ng-model="query.departureDate" placeholder="yyyy/MM/dd">
     </label>
   </div>
 
@@ -47,6 +54,8 @@
      <button class="button button-full button-positive" ng-click="removeFlights()">
    Remove Flights
   </button>
+
+  {{flights}}
 
 </body>
 </html>

@@ -1,26 +1,26 @@
-var formApp = angular.module('formApp', []);
+app.controller('FormCtrl', function ($scope, $rootScope) {
 
-
-formApp.controller('FormCtrl', function ($scope) {
+  // $scope.$watch('query.departureDate', function() {
+  //       $scope.query.departureDate = $filter('date')($scope.query.departureDate, "yyyy/MM/dd");
+  // });
 
 $scope.addFlight = function() {
-
-	var flight = {
-		"flightNumber": $scope.flightNum,
-		"departureDate": $scope.flightDate
+	if(!$rootScope.flights){
+		$rootScope.flights = [];
 	}
+	// $scope.query.departureDate = $filter('date')($scope.query.departureDate, "yyyy/MM/dd");
+	$rootScope.flights.push($scope.query);
 
-	var flights = localStorage.getItem("flightArray");
-
-	if(!flights){
-		var flights = [];
-		flights.push(flight);
-		localStorage.setItem("flightArray", JSON.stringify(flights));
-	} else {
-		flights = JSON.parse(localStorage.getItem("flightArray"));
-		flights.push(flight);
-		localStorage.setItem("flightArray", JSON.stringify(flights));
-	}
+	steroids.layers.pop();
+	// if(!flights){
+	// 	var flights = [];
+	// 	flights.push(flight);
+	// 	localStorage.setItem("flightArray", JSON.stringify(flights));
+	// } else {
+	// 	flights = JSON.parse(localStorage.getItem("flightArray"));
+	// 	flights.push(flight);
+	// 	localStorage.setItem("flightArray", JSON.stringify(flights));
+	// }
 };
 
 $scope.getFlights = function(){

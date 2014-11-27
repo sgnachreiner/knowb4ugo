@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <title>Newsfeed Page</title>
@@ -11,15 +11,27 @@
   <script src="/components/steroids-js/steroids.js"></script>
 
   <script src="/components/angular/angular.min.js"></script>
-  <script src="/components/angular-resource/angular-resource.min.js"></script>
-  <script src="/components/angular-touch/angular-touch.min.js"></script>
+  <script src="/components/angular-cookies/angular-cookies.min.js"></script>
+
+  <script src="/components/angularLocalStorage/src/angularLocalStorage.js"></script>
 
   <script src="/components/jquery/dist/jquery.min.js"></script>
 
   <script src="/components/lodash/dist/lodash.min.js"></script>
   <script src="/components/restangular/dist/restangular.min.js"></script>
+
+
+  <script src="/models/flight.js"></script>
+  <script src="/models/airport.js"></script>
+
+  <script src="/app.js"></script>
+  <script src="/controllers/flight.js"></script>
 </head>
-<body>
+
+<body ng-controller="FetchCtrl">
+  {{flights}}
+
+  {{data}}
   <div class="card">
     <div class="item item-text-wrap">
       <h3>Getting to ORD</h3>
