@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
+
 	<meta charset="utf-8">
 	<title>Newsfeed Page</title>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQG2Je4-rYCcoR0gOW64CA2geaA6zaNtY"></script>
 	<link rel="stylesheet" href="/components/ionic/css/ionic.min.css" />
 	<link rel="stylesheet" href="/stylesheets/application.css" />
+  <link rel="stylesheet" href="/stylesheets/newsfeed.css" />
 
 	<script src="/javascripts/newsfeed.js"></script>
 	<script src="http://localhost/cordova.js"></script>
@@ -28,84 +30,111 @@
 	<script src="/app.js"></script>
 	<script src="/controllers/flight.js"></script>
 </head>
+
 <body ng-controller="FetchCtrl">
-	{{flights}}
-
-	{{data}}
-
-	<button class="button button-full button-positive" ng-click="showForm()">
-		Add Flight
-	</button>
-	<div class="card">
-		<div class="item item-text-wrap">
-			<h3>Traffic</h3>
-			<div class="row">
-				<p>30min to airport</p>
-			</div>
-		</div>
-	</div>
-	<div class="card">
-		<div class="item item-text-wrap">
-			<h3>Weather at ORD</h3>
-			<div class="row">
-				<p>25&deg; F<br>Icy, snow showers</p>
-			</div>
-		</div>
-	</div>
-	<div class="card">
-		<div class="item item-text-wrap">
-			<h3>TSA</h3>
-			<div class="row">
-				<p>10min security line</p>
-			</div>
-		</div>
-	</div>
-	<div class="card">
-		<div class="item item-text-wrap">
-			<h3>AA100</h3>
-			<div class = "row">
-				<p>Departure (JFK)</p>
-			</div>
-			<div class = "row">
-				<div class = "row">
-					<div class = "col-10">
-					</div>
-					<div class = "col">
-						<p>They Say</p>
-						<h3>6:00 pm</h3>
-					</div>
-					<div class = "col">
-						<p>We Say</p>
-						<h3>6:45 pm</h3>
-					</div>
-				</div>
-			</div>
-			<div class = "row">
-				<p>Arrival (LHR)</p>
-			</div>
-			<div class = "row">
-				<div class = "row">
-					<div class = "col-10">
-					</div>
-					<div class = "col">
-						<p>They Say</p>
-						<h3>6:00 am</h3>
-					</div>
-					<div class = "col">
-						<p>We Say</p>
-						<h3>6:00 am</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="card">
-		<div class="item item-text-wrap">
-			<h3>Weather at LHR</h3>
-			<div class="row">
-				<p>50&deg; F<br>Rainy, drizzle</p>
-			</div>
-		</div>
-	</div>
+  <button ng-click="fetch(0)">fetch</button>
+  {{flights}}
+  {{count}}
+  {{data}}
+  <div class="card">
+    <div class="item item-text-wrap">
+      <h3>Getting to ORD</h3>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>38 minute drive from current location.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>35 minutes without traffic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="item item-text-wrap">
+      <h3>Weather at ORD</h3>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>25&deg; F</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>Icy, snow showers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="item item-text-wrap">
+      <h3>TSA</h3>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>10min security line</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="item item-text-wrap">
+      <h3>AA100</h3>
+      <div class = "row">
+        <p>Departure (JFK)</p>
+      </div>
+      <div class = "row">
+        <div class = "row">
+          <div class = "col-10">
+          </div>
+          <div class = "col">
+            <p>They Say</p>
+            <h3>6:00 pm</h3>
+          </div>
+          <div class = "col">
+            <p>We Say</p>
+            <h3>6:45 pm</h3>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <p>Arrival (LHR)</p>
+      </div>
+      <div class = "row">
+        <div class = "row">
+          <div class = "col-10">
+          </div>
+          <div class = "col">
+            <p>They Say</p>
+            <h3>6:00 am</h3>
+          </div>
+          <div class = "col">
+            <p>We Say</p>
+            <h3>6:00 am</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="item item-text-wrap">
+      <h3>Weather at LHR</h3>
+      <div class="row">
+        <p>50&deg; F<br>Rainy, drizzle</p>
+      </div>
+    </div>
+  </div>
+  <div class="buttondad"> 
+    <button id="addflight" class="button button-full button-positive" onClick="showForm();">
+    Add Another Flight
+    </button>
+  </div>
+<script>
+function showForm() {
+  //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+  var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+  steroids.layers.push(webView);
+}
+</script>
 </body>
 </html>

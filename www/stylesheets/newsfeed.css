@@ -1,0 +1,24 @@
+#addflight {
+	top: 88%;
+	position: fixed;
+	z-index: 4;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body {
+	padding-bottom: 40px;
+}
+
+.card {
+	text-align: right;
+}
+
+.row {
+	font-size: 4px;
+}
+
+.h3 {
+	
+}
