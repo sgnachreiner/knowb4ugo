@@ -66,5 +66,43 @@ app.controller('FetchCtrl', ['$scope', '$http', '$templateCache', '$filter', '$r
       var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
       steroids.layers.push(webView);
     }
+    // variables for gps data
+    var currentLat;
+    var currentLong;
+    // calling gps
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    function onSuccess (position){
+      // lat and long data
+      currentLat = position.coords.latitude;
+      currentLong = position.coords.longitude;
+      // steroids.logger.log("Success!");
+      // steroids.logger.log(currentLat);
+      // steroids.logger.log(currentLong);
+
+      // create origin and destination for google maps request
+      var origin = new google.maps.LatLng(currentLat, currentLong);
+      var destination = "O'Hare International Airport";
+
+      // call google maps API
+      var service = new google.maps.DistanceMatrixService();
+      service.getDistanceMatrix(
+        {
+          origins: [origin],
+          destinations: [destination],
+          travelMode: google.maps.TravelMode.DRIVING,
+          unitSystem: google.maps.UnitSystem.METRIC,
+          durationInTraffic: true,
+          avoidHighways: false,
+          avoidTolls: false
+        }, callback);
+
+      function callback(response, status) {
+        // data returned from google maps
+        navigator.notification.alert("It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here");
+      }
+    }
+    function onError (error){
+      steroids.logger.log("Failure!");
+    }
 
   }]);
