@@ -34,6 +34,8 @@
 <body ng-controller="FetchCtrl">
   <img id="background" src="/icons/itinerary_background.png"/>
   <button class = "button button-full button-assertive" ng-click="fetch(0)">fetch</button>
+
+  <div class = "card" ng-show="show"> No flights added. Please add a flight.</div>
   <div class="card">
     <div class="item item-text-wrap">
       <div class = "row">
