@@ -33,104 +33,147 @@
 
 <body ng-controller="FetchCtrl">
   <button ng-click="fetch(0)">fetch</button>
-  {{flights}}
-  {{url}}
-  {{count}}
-  {{data}}
+  <br>
+  {{firstFlight}}
+  <br><br><br>
+  -----------------------------------
+  <br><br><br>
+  {{restFlights}}
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>Getting to ORD</h3>
+      <h3>Getting to {{carTimeDestination}}</h3>
       <div class="row">
         <div class="col col-90 col-offset-10">
-          <p>38 minute drive from current location.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-90 col-offset-10">
-          <p>35 minutes without traffic.</p>
+          <p>{{carTimeResponse}}</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="item item-text-wrap">
-      <h3>Weather at ORD</h3>
-      <div class="row">
-        <div class="col col-90 col-offset-10">
-          <p>25&deg; F</p>
+  <div ng-repeat="response in firstFlight">
+<!--     <div class="card">
+      <div class="item item-text-wrap">
+        <h3>Weather at ORD</h3>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>25&deg; F</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>Icy, snow showers</p>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col col-90 col-offset-10">
-          <p>Icy, snow showers</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="item item-text-wrap">
-      <h3>TSA</h3>
-      <div class="row">
-        <div class="col col-90 col-offset-10">
-          <p>10min security line</p>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="item item-text-wrap">
-      <h3>AA100</h3>
-      <div class = "row">
-        <div class="col col-90 col-offset-10">
-          <p>Departure (JFK)</p>
-        </div>
-      </div>
-      <div class = "row">
+    </div> -->
+    <div class="card">
+      <div class="item item-text-wrap">
+        <h3>{{response.flightTracks[0].carrierFsCode}} {{response.flightTracks[0].flightNumber}}</h3>
         <div class = "row">
-          <div class = "col-10">
-          </div>
-          <div class = "col">
-            <p>They Say</p>
-            <h3>6:00 pm</h3>
-          </div>
-          <div class = "col">
-            <p>We Say</p>
-            <h3>6:45 pm</h3>
+          <div class="col col-90 col-offset-10">
+            <p>Departure (JFK)</p>
           </div>
         </div>
-      </div>
-      <div class = "row">
-        <div class="col col-90 col-offset-10">
-          <p>Arrival (LHR)</p>
-        </div>
-      </div>
-      <div class = "row">
         <div class = "row">
-          <div class = "col-10">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>6:00 pm</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3>6:45 pm</h3>
+            </div>
           </div>
-          <div class = "col">
-            <p>They Say</p>
-            <h3>6:00 am</h3>
+        </div>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Arrival (LHR)</p>
           </div>
-          <div class = "col">
-            <p>We Say</p>
-            <h3>6:00 am</h3>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>6:00 am</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3>6:00 am</h3>
+            </div>
           </div>
         </div>
       </div>
     </div>
+<!--     <div class="card">
+      <div class="item item-text-wrap">
+        <h3>Weather at LHR</h3>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>50&deg; F<br>Rainy, drizzle</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
-  <div class="card">
-    <div class="item item-text-wrap">
-      <h3>Weather at LHR</h3>
-      <div class="row">
-        <div class="col col-90 col-offset-10">
-          <p>50&deg; F<br>Rainy, drizzle</p>
+  <div ng-repeat="response in restFlights">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <h3>{{response.flightTracks[0].carrierFsCode}} {{response.flightTracks[0].flightNumber}}</h3>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Departure (JFK)</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>6:00 pm</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3>6:45 pm</h3>
+            </div>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Arrival (LHR)</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>6:00 am</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3>6:00 am</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+<!--     <div class="card">
+      <div class="item item-text-wrap">
+        <h3>Weather at LHR</h3>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>50&deg; F<br>Rainy, drizzle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+ -->  </div>
   <div class="buttondad"> 
     <button id="addflight" class="button button-full button-positive" onClick="showForm();">
     Add Another Flight

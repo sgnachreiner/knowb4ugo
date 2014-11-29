@@ -55,14 +55,16 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
 
       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
         success(function(data, status) {
+          $scope.firstFlight = [];
           $scope.status = status;
-          $scope.data = [];
-          $scope.data.push(data);
+          $scope.firstFlight.push(data);
         }).
         error(function(data, status) {
-          $scope.data = data || "Request failed";
+          $scope.firstFlight = data || "Request failed";
           $scope.status = status;
       });
+
+      $scope.restFlights = [];
 
       if($scope.flights.length > 1 ){
         for(var i = 1; i < $scope.flights.length; i++) {
@@ -74,15 +76,22 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
           $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
             success(function(data, status) {
               $scope.status = status;
-              $scope.data.push(data);
+              $scope.restFlights.push(data);
             }).
             error(function(data, status) {
-              $scope.data = data || "Request failed";
+              $scope.restFlights.push("Request failed");
               $scope.status = status;
           });
         }
       }
 
+      $scope.$watch('restFlights', function(newValue, oldValue){
+
+      })
+
+      $scope.$watch('firstFlight', function(newValue, oldValue){
+
+      })
     };
 
     $scope.showForm = function() {
@@ -135,6 +144,9 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
       function callback(response, status) {
         // data returned from google maps
         navigator.notification.alert("It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here");
+        $scope.carTimeResponse = "It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here";
+        $scope.carTimeDestination = destination;
+        steroids.logger.log($scope.carTime);
       }
     }
     function onError (error){
