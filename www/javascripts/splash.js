@@ -14,7 +14,7 @@ function showForm() {
   steroids.layers.push(webView);
 }
 
-function showForm() {
+function showAlerts() {
   //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
   var webView = new steroids.views.WebView("http://localhost/alerts.html");
   steroids.layers.push(webView);
