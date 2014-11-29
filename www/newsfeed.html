@@ -34,15 +34,6 @@
 <body ng-controller="FetchCtrl">
   <button ng-click="fetch(0)">fetch</button>
 
-{{firstWeather}} 
-  --------
-  {{restWeathers}}
-  <br>
-  {{firstFlight}}
-  <br><br><br>
-  -----------------------------------
-  <br><br><br>
-  {{restFlights}}
   <div class="card">
     <div class="item item-text-wrap">
       <h3>Getting to {{carTimeDestination}}</h3>
@@ -54,21 +45,21 @@
     </div>
   </div>
   <div ng-repeat="response in firstFlight">
-<!--     <div class="card">
+    <div class="card">
       <div class="item item-text-wrap">
-        <h3>Weather at ORD</h3>
+        <h3>Weather at {{firstWeather[0].request.airport.fsCode}}</h3>
         <div class="row">
           <div class="col col-90 col-offset-10">
-            <p>25&deg; F</p>
+            <p>{{firstWeather[0].metar.temperatureCelsius * 9/5 + 32}}&deg; F</p>
           </div>
         </div>
         <div class="row">
           <div class="col col-90 col-offset-10">
-            <p>Icy, snow showers</p>
+            <p>{{firstWeather[0].zoneForecast.dayForecasts[0].forecast}}</p>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="card">
       <div class="item item-text-wrap">
         <h3>{{response.flightStatuses[0].carrierFsCode}} {{response.flightStatuses[0].flightNumber}}</h3>
@@ -112,16 +103,21 @@
         </div>
       </div>
     </div>
-<!--     <div class="card">
+    <div class="card">
       <div class="item item-text-wrap">
-        <h3>Weather at LHR</h3>
+        <h3>Weather at {{firstWeather[1].request.airport.fsCode}}</h3>
         <div class="row">
           <div class="col col-90 col-offset-10">
-            <p>50&deg; F<br>Rainy, drizzle</p>
+            <p>{{firstWeather[1].metar.temperatureCelsius * 9/5 + 32}}&deg; F</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{firstWeather[1].zoneForecast.dayForecasts[0].forecast}}</p>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
   <div ng-repeat="response in restFlights">
     <div class="card">
@@ -161,28 +157,46 @@
             </div>
             <div class = "col">
               <p>We Say</p>
-              <h3>{{response.flightStatuses[0].operationalTimes.publishedArrival.dateLocal + 1800| date:'medium'}}</h3>
+              <h3>{{response.flightStatuses[0].operationalTimes.publishedArrival.dateLocal | date:'medium'}}</h3>
             </div>
           </div>
         </div>
       </div>
     </div>
-     <!--<div class="card">
+    <div class="card">
       <div class="item item-text-wrap">
-        <h3>Weather at LHR</h3>
+        <h3>Weather at {{restWeathers[$index].request.airport.fsCode}}</h3>
         <div class="row">
           <div class="col col-90 col-offset-10">
-            <p>50&deg; F<br>Rainy, drizzle</p>
+            <p>{{restWeathers[$index].metar.temperatureCelsius * 9/5 + 32}}&deg; F</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{restWeathers[$index].zoneForecast.dayForecasts[0].forecast}}</p>
           </div>
         </div>
       </div>
-    </div>-->
+    </div>
   </div>
   <div class="buttondad"> 
     <button id="addflight" class="button button-full button-positive" onClick="showForm();">
     Add Another Flight
     </button>
   </div>
+
+  {{firstWeather}} 
+  <br><br><br>
+  -----------------------------------
+  {{restWeathers}}
+  <br><br><br>
+  -----------------------------------
+  <br><br><br>
+  {{firstFlight}}
+  <br><br><br>
+  -----------------------------------
+  <br><br><br>
+  {{restFlights}}
 <script>
 function showForm() {
   //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
