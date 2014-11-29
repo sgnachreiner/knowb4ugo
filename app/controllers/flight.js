@@ -44,23 +44,99 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
     $scope.flights = JSON.parse(localStorage.getItem("flights"));
     $scope.method = 'JSONP';
     
-    $scope.fetch = function(num) {
-      $scope.flightNumber = $scope.flights[num].flightNum;
-      $scope.date = $filter('date')($scope.flights[num].departureDate, "yyyy/MM/dd");
-      $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
-      steroids.logger.log($scope.url);
+    $scope.fetch = function() {
+      //
+      $scope.flightNumber = $scope.flights[0].flightNum;
+      $scope.date = $filter('date')($scope.flights[0].departureDate, "yyyy/MM/dd");
+      $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
+
       $scope.code = null;
       $scope.response = null;
 
+      // flight data
       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
         success(function(data, status) {
+          $scope.firstFlight = [];
           $scope.status = status;
-          $scope.data = data;
+          $scope.firstFlight.push(data);
+          $scope.weatherURL1 = data.appendix.airports[0].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+          $scope.weatherURL2 = data.appendix.airports[1].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+          // steroids.logger.log($scope.weatherURL1);
+          
+          //weather data for first leg of flight (both)
+          $scope.firstWeather = [];
+          $http({method: $scope.method, url: $scope.weatherURL1, cache: $templateCache}).
+            success(function(data, status) {
+              $scope.status = status;
+              $scope.firstWeather.push(data);
+            }).
+            error(function(data, status) {
+              $scope.firstWeather.push("Request failed");
+              $scope.status = status;
+          });
+          $http({method: $scope.method, url: $scope.weatherURL2, cache: $templateCache}).
+            success(function(data, status) {
+              $scope.status = status;
+              $scope.firstWeather.push(data);
+            }).
+            error(function(data, status) {
+              $scope.firstWeather.push("Request failed");
+              $scope.status = status;
+          });
+
         }).
         error(function(data, status) {
-          $scope.data = data || "Request failed";
+          $scope.firstFlight = data || "Request failed";
           $scope.status = status;
       });
+
+
+
+
+
+      // weather data for airports
+      $scope.restWeathers = [];
+      $scope.restFlights = [];
+
+      if($scope.flights.length > 1 ){
+        for(var i = 1; i < $scope.flights.length; i++) {
+          $scope.flightNumber = $scope.flights[i].flightNum;
+          $scope.date = $filter('date')($scope.flights[i].departureDate, "yyyy/MM/dd");
+          $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
+
+
+          $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+            success(function(data, status) {
+              $scope.status = status;
+
+              $scope.restFlights.push(data);
+              $scope.weatherURL = data.appendix.airports[0].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+              //get the 2nd airport weather data and push to restweathers[]
+              $http({method: $scope.method, url: $scope.weatherURL, cache: $templateCache}).
+                success(function(data, status) {
+                  $scope.status = status;
+                  $scope.restWeathers.push(data);
+                }).
+                error(function(data, status) {
+                  $scope.restWeathers.push("Request failed");
+                  $scope.status = status;
+              });
+
+            }).
+            error(function(data, status) {
+              $scope.restFlights.push("Request failed");
+              $scope.status = status;
+          });
+        }
+      }
+
+      $scope.$watch('restFlights', function(newValue, oldValue){
+
+      })
+
+      $scope.$watch('firstFlight', function(newValue, oldValue){
+
+      })
     };
 
     $scope.showForm = function() {
@@ -113,6 +189,8 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
       function callback(response, status) {
         // data returned from google maps
         navigator.notification.alert("It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here");
+        $scope.carTimeResponse = "It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here";
+        $scope.carTimeDestination = destination;
       }
     }
     function onError (error){
