@@ -188,9 +188,9 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
 
       function callback(response, status) {
         // data returned from google maps
-        navigator.notification.alert("It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here");
+        //navigator.notification.alert("It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here");
         $scope.carTimeResponse = "It will take " + response.rows[0].elements[0].duration.text + " to get to " + destination + " from here";
-        $scope.carTimeDestination = destination;
+        $scope.carTimeDestination = "Getting to " + destination;
       }
     }
     function onError (error){
