@@ -32,6 +32,7 @@
 </head>
 
 <body ng-controller="FetchCtrl">
+  <img id="background" src="/icons/itinerary_background.png"/>
   <button ng-click="fetch(0)">fetch</button>
   {{flights}}
   {{url}}
@@ -39,7 +40,14 @@
   {{data}}
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>Getting to ORD</h3>
+      <div class = "row">
+        <div class = "col col-10">
+          <img id="green" src="/icons/green_checkmark.jpg">
+        </div>
+        <div class = "col col-90">
+          <h3>Getting to ORD</h3>
+        </div>
+      </div>
       <div class="row">
         <div class="col col-90 col-offset-10">
           <p>38 minute drive from current location.</p>
@@ -54,7 +62,14 @@
   </div>
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>Weather at ORD</h3>
+      <div class = "row">
+        <div class = "col col-10">
+          <img id="alert" src="/icons/exclamation_point.png">
+        </div>
+        <div class = "col col-90">
+          <h3>Weather at ORD</h3>
+        </div>
+      </div>
       <div class="row">
         <div class="col col-90 col-offset-10">
           <p>25&deg; F</p>
@@ -69,7 +84,14 @@
   </div>
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>TSA</h3>
+      <div class = "row">
+        <div class = "col col-10">
+          <img id="alert" src="/icons/exclamation_point.png">
+        </div>
+        <div class = "col col-90">
+          <h3>TSA</h3>
+        </div>
+      </div>
       <div class="row">
         <div class="col col-90 col-offset-10">
           <p>10min security line</p>
@@ -80,7 +102,14 @@
   </div>
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>AA100</h3>
+      <div class = "row">
+        <div class = "col col-10">
+          <img id="alert" src="/icons/exclamation_point.png">
+        </div>
+        <div class = "col col-90">
+          <h3>AA100</h3>
+        </div>
+      </div>
       <div class = "row">
         <div class="col col-90 col-offset-10">
           <p>Departure (JFK)</p>
@@ -123,7 +152,14 @@
   </div>
   <div class="card">
     <div class="item item-text-wrap">
-      <h3>Weather at LHR</h3>
+      <div class = "row">
+        <div class = "col col-10">
+          <img id="green" src="/icons/green_checkmark.jpg">
+        </div>
+        <div class = "col col-90">
+          <h3>Weather at LHR</h3>
+        </div>
+      </div>
       <div class="row">
         <div class="col col-90 col-offset-10">
           <p>50&deg; F<br>Rainy, drizzle</p>
@@ -132,7 +168,7 @@
     </div>
   </div>
   <div class="buttondad"> 
-    <button id="addflight" class="button button-full button-positive" onClick="showForm();">
+    <button id="addflight" class="button button-full button-assertive" onClick="showForm();">
     Add Another Flight
     </button>
   </div>

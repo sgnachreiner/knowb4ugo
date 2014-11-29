@@ -1,47 +1,49 @@
-<div ng-controller="IndexCtrl">
-  <div class="card">
-    <div class="item item-text-wrap" ng-click="open(flight.id)" ng-repeat="flight in flights">
-      <div class = "row">
-        <div class = "col" style = "background-color:red">
-          <br>
-          <br>
-          <br>
-          <br>
-        </div>
-        <div class = "col col-90">
-          <b>{{ flight.date }}</b>
-          <br>
-          Scheduled Departure: <b>{{ flight.reportedDepartureTime }}</b>
-          <br>
-          Estimated Departure: <b>{{ flight.estimatedDepartureTime }}</b>
-          <br>
-          <b>{{flight.departureAirportFsCode}} > {{flight.arrivalAirportFsCode}}</b>
+<html>
+  <body>
+    <div ng-controller="IndexCtrl">
+      <div class="card">
+        <div class="item item-text-wrap" ng-click="open(flight.id)" ng-repeat="flight in flights">
+          <div class = "row">
+            <div class = "col" style = "background-color:red">
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <div class = "col col-90">
+              <b>{{ flight.date }}</b>
+              <br>
+              Scheduled Departure: <b>{{ flight.reportedDepartureTime }}</b>
+              <br>
+              Estimated Departure: <b>{{ flight.estimatedDepartureTime }}</b>
+              <br>
+              <b>{{flight.departureAirportFsCode}} > {{flight.arrivalAirportFsCode}}</b>
+            </div>
+          </div>
         </div>
       </div>
+    <!--   <ul class="list">
+        <li class="item item-icon-right" ng-click="open(flight.id)" ng-repeat="flight in flights">
+          <h2>{{ flight.name }}</h2>
+          <br>
+          Scheduled Departure: {{ flight.reportedDepartureTime }}
+          <br>
+          Estimated Departure: {{ flight.estimatedDepartureTime }}
+          <i class="icon ion-ios7-arrow-right"></i>
+        </li>
+      </ul> -->
+      
+
+    <!--
     </div>
-  </div>
-<!--   <ul class="list">
-    <li class="item item-icon-right" ng-click="open(flight.id)" ng-repeat="flight in flights">
-      <h2>{{ flight.name }}</h2>
-      <br>
-      Scheduled Departure: {{ flight.reportedDepartureTime }}
-      <br>
-      Estimated Departure: {{ flight.estimatedDepartureTime }}
-      <i class="icon ion-ios7-arrow-right"></i>
-    </li>
-  </ul> -->
-  
+    <div ng-controller="FetchController">
+    <input type="text" ng-model="url" size="80"/>
+    <div ng-controller="FetchController">
+    {{url}}
 
-<!--
-</div>
-<div ng-controller="FetchController">
-<input type="text" ng-model="url" size="80"/>
-<div ng-controller="FetchController">
-{{url}}
+    <button id="fetchbtn" ng-click="fetch()">fetch</button><br>
 
-<button id="fetchbtn" ng-click="fetch()">fetch</button><br>
-
-Flight Name: {{data.flightTracks}}
+    Flight Name: {{data.flightTracks}}
 
 
 
@@ -49,6 +51,7 @@ Flight Name: {{data.flightTracks}}
 
 
 
--->
-</div>
-
+    -->
+    </div>
+  </body>
+</html>
