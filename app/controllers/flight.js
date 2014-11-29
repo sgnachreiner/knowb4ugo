@@ -53,17 +53,50 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
       $scope.code = null;
       $scope.response = null;
 
+      // flight data
       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
         success(function(data, status) {
           $scope.firstFlight = [];
           $scope.status = status;
           $scope.firstFlight.push(data);
+          $scope.weatherURL1 = data.appendix.airports[0].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+          $scope.weatherURL2 = data.appendix.airports[1].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+          // steroids.logger.log($scope.weatherURL1);
+          
+          //weather data for first leg of flight (both)
+          $scope.firstWeather = [];
+          $http({method: $scope.method, url: $scope.weatherURL1, cache: $templateCache}).
+            success(function(data, status) {
+              $scope.status = status;
+              $scope.firstWeather.push(data);
+            }).
+            error(function(data, status) {
+              $scope.firstWeather.push("Request failed");
+              $scope.status = status;
+          });
+          $http({method: $scope.method, url: $scope.weatherURL2, cache: $templateCache}).
+            success(function(data, status) {
+              $scope.status = status;
+              $scope.firstWeather.push(data);
+            }).
+            error(function(data, status) {
+              $scope.firstWeather.push("Request failed");
+              $scope.status = status;
+          });
+
         }).
         error(function(data, status) {
           $scope.firstFlight = data || "Request failed";
           $scope.status = status;
       });
 
+
+
+
+
+
+      // weather data for airports
+      $scope.restWeathers = [];
       $scope.restFlights = [];
 
       if($scope.flights.length > 1 ){
@@ -79,6 +112,18 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
 
 
               $scope.restFlights.push(data);
+              $scope.weatherURL = data.appendix.airports[1].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+              //get the 2nd airport weather data and push to restweathers[]
+              $http({method: $scope.method, url: $scope.weatherURL, cache: $templateCache}).
+                success(function(data, status) {
+                  $scope.status = status;
+                  $scope.restWeathers.push(data);
+                }).
+                error(function(data, status) {
+                  $scope.restWeathers.push("Request failed");
+                  $scope.status = status;
+              });
+
             }).
             error(function(data, status) {
               $scope.restFlights.push("Request failed");
