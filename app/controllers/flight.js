@@ -110,7 +110,7 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
               $scope.status = status;
 
               $scope.restFlights.push(data);
-              $scope.weatherURL = data.appendix.airports[0].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+              $scope.weatherURL = data.appendix.airports[1].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
               //get the 2nd airport weather data and push to restweathers[]
               $http({method: $scope.method, url: $scope.weatherURL, cache: $templateCache}).
                 success(function(data, status) {
