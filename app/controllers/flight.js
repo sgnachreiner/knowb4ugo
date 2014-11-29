@@ -40,13 +40,22 @@ app.controller('ShowCtrl', function ($scope, $filter, FlightRestangular, storage
 
 
 app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $rootScope) {
-    
+
     $scope.flights = JSON.parse(localStorage.getItem("flights"));
+    if($scope.flights.length > 0){
+        $scope.show = false;
+    } else{
+      $scope.show = true;
+    }
     $scope.method = 'JSONP';
     
     $scope.fetch = function() {
-      //
       $scope.flights = JSON.parse(localStorage.getItem("flights"));
+      if($scope.flights.length > 0){
+        $scope.show = false;
+      } else{
+        $scope.show = true;
+      }
       $scope.flightNumber = $scope.flights[0].flightNum;
       $scope.date = $filter('date')($scope.flights[0].departureDate, "yyyy/MM/dd");
       $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/DL/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
@@ -198,6 +207,6 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
       steroids.logger.log("Failure!");
     }
 
-    var timerId = setInterval(timerMethod, 1000);   
+
 
   });
