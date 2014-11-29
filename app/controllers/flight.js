@@ -45,10 +45,10 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
     $scope.method = 'JSONP';
     
     $scope.fetch = function(num) {
-      $scope.flightNumber = $scope.flights[num].flightNumber;
+      $scope.flightNumber = $scope.flights[num].flightNum;
       $scope.date = $filter('date')($scope.flights[num].departureDate, "yyyy/MM/dd");
       $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/tracks/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
-
+      steroids.logger.log($scope.url);
       $scope.code = null;
       $scope.response = null;
 
