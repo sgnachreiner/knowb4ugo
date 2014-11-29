@@ -46,9 +46,10 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
     
     $scope.fetch = function() {
       //
+      $scope.flights = JSON.parse(localStorage.getItem("flights"));
       $scope.flightNumber = $scope.flights[0].flightNum;
       $scope.date = $filter('date')($scope.flights[0].departureDate, "yyyy/MM/dd");
-      $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
+      $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/DL/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
 
       $scope.code = null;
       $scope.response = null;
@@ -102,7 +103,7 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
         for(var i = 1; i < $scope.flights.length; i++) {
           $scope.flightNumber = $scope.flights[i].flightNum;
           $scope.date = $filter('date')($scope.flights[i].departureDate, "yyyy/MM/dd");
-          $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/AA/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
+          $scope.url = 'https://api.flightstats.com/flex/flightstatus/rest/v2/jsonp/flight/status/DL/'+ $scope.flightNumber +'/dep/'+ $scope.date +'?appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&utc=false&includeFlightPlan=false&maxPositions=2&callback=JSON_CALLBACK';
 
 
           $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
@@ -110,7 +111,7 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
               $scope.status = status;
 
               $scope.restFlights.push(data);
-              $scope.weatherURL = data.appendix.airports[1].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
+              $scope.weatherURL = data.appendix.airports[0].weatherUrl.replace('json','jsonp') + '&appId=c7c9c4f0&appKey=cacf8348266684a0eaeaef6dc3722402&callback=JSON_CALLBACK';
               //get the 2nd airport weather data and push to restweathers[]
               $http({method: $scope.method, url: $scope.weatherURL, cache: $templateCache}).
                 success(function(data, status) {
