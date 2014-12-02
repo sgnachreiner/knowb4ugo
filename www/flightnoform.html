@@ -32,6 +32,25 @@
 
 </head>
 <body ng-controller="FormCtrl">
+  <div class="tabs-striped tabs-background-stable tabs-assertive">
+    <div class="tabs">
+      <a class="tab-item active" href="#">
+        Flight #
+      </a>
+      <a class="tab-item" href="#">
+        Itinerary
+      </a>
+      <a class="tab-item" href="#">
+        Import
+      </a>
+    </div>
+  </div>
+
+  <br>
+  <div class = "header">
+    <center><h3 style = "color:#EF4E3A">Initial Travel Setup</h3></center>
+  </div>
+  <br>
 
   <div class="list">
     <label class="item item-input item-stacked-label">
@@ -50,19 +69,19 @@
   </button>
 
 
-   <button class="button button-full button-assertive" ng-click="getFlights()">
+<!--   <button class="button button-full button-assertive" ng-click="getFlights()">
    GetFlights
+  </button> -->
+
+  <button class="button button-full button-assertive" ng-click="removeFlights()">
+   Clear All Flights
   </button>
 
-     <button class="button button-full button-assertive" ng-click="removeFlights()">
-   Remove Flights
-  </button>
+  <br/>
+  <img id="runner" src="/icons/running_man.png">
 
   {{flights}}
 
-  <br/>
-  <br/>
-  <img id="runner" src="/icons/running_man.png">
 
 </body>
 </html>

@@ -35,7 +35,7 @@
   <img id="background" src="/icons/itinerary_background.png"/>
   <button class = "button button-full button-assertive" ng-click="fetch(0)">fetch</button>
 
-  <div class = "card" ng-show="show"> No flights added. Please add a flight.</div>
+  <div class = "card" ng-show="show"><center>No flights added. Please add a flight.</center></div>
   <div class="card">
     <div class="item item-text-wrap">
       <div class = "row">
@@ -224,9 +224,14 @@
     </div>
   </div>
   <div class="buttondad"> 
-    <button id="addflight" class="button button-full button-assertive" onClick="showForm();">
-    Add Another Flight
+    <center>
+    <button id="addflight" class="button button-assertive" onClick="showForm();">
+      Flight #
     </button>
+    <button class="button button-assertive">
+      Itinerary
+    </button>
+    </center>
   </div>
 <script>
 function showForm() {
