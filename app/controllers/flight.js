@@ -50,6 +50,7 @@ app.controller('FetchCtrl', function($scope, $http, $templateCache, $filter, $ro
     $scope.method = 'JSONP';
     
     $scope.fetch = function() {
+      $scope.Math = window.Math;
       $scope.flights = JSON.parse(localStorage.getItem("flights"));
       if($scope.flights.length > 0){
         $scope.show = false;
