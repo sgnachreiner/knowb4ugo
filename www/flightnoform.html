@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head >
+  <meta charset="utf8">
+  <title>Steroids App</title>
+
+  <link rel="stylesheet" href="/components/ionic/css/ionic.min.css" />
+  <link rel="stylesheet" href="/stylesheets/application.css" />
+  <link rel="stylesheet" href="/stylesheets/flightnoform.css" />
+
+  <script src="http://localhost/cordova.js"></script>
+  <script src="/components/steroids-js/steroids.js"></script>
+
+  <script src="/components/angular/angular.min.js"></script>
+  <script src="/components/angular-cookies/angular-cookies.min.js"></script>
+
+  <script src="/components/angularLocalStorage/src/angularLocalStorage.js"></script>
+
+  <script src="/components/jquery/dist/jquery.min.js"></script>
+
+  <script src="/components/lodash/dist/lodash.min.js"></script>
+  <script src="/components/restangular/dist/restangular.min.js"></script>
+
+
+  <script src="/models/flight.js"></script>
+  <script src="/models/airport.js"></script>
+
+  <script src="/app.js"></script>
+  <script src="/controllers/flight.js"></script>
+  <script src="javascripts/flightnoform.js"></script>
+
+
+</head>
+<body ng-controller="FormCtrl">
+  <div class="tabs-striped tabs-background-stable tabs-assertive">
+    <div class="tabs">
+      <a class="tab-item active" href="#">
+        Flight #
+      </a>
+      <a class="tab-item" href="#">
+        Itinerary
+      </a>
+      <a class="tab-item" href="#">
+        Import
+      </a>
+    </div>
+  </div>
+
+  <br>
+  <div class = "header">
+    <center><h4 style = "color:#EF4E3A">Initial Travel Setup</h3></center>
+  </div>
+  <br>
+
+  <div class="list">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Delta Flight Number</span>
+      <input type="text" ng-model="query.flightNum" placeholder="111">
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Departure Date</span>
+      <input type="date" ng-model="query.departureDate" placeholder="yyyy/MM/dd">
+    </label>
+  </div>
+
+  <button class="button button-full button-assertive" ng-click="addFlight()">
+    Add Flight
+  </button>
+
+
+<!--   <button class="button button-full button-assertive" ng-click="getFlights()">
+   GetFlights
+  </button> -->
+
+  <button class="button button-full button-assertive" ng-click="removeFlights()">
+   Clear All Flights
+  </button>
+
+  <br/>
+  <img id="runner" src="/icons/running_man.png">
+
+  <!-- {{flights}} -->
+
+
+</body>
+</html>

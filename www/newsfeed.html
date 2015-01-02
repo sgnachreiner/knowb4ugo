@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+	<meta charset="utf-8">
+	<title>Newsfeed Page</title>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQG2Je4-rYCcoR0gOW64CA2geaA6zaNtY"></script>
+	<link rel="stylesheet" href="/components/ionic/css/ionic.min.css" />
+	<link rel="stylesheet" href="/stylesheets/application.css" />
+  <link rel="stylesheet" href="/stylesheets/newsfeed.css" />
+
+	<script src="/javascripts/newsfeed.js"></script>
+	<script src="http://localhost/cordova.js"></script>
+	<script src="/components/steroids-js/steroids.js"></script>
+
+	<script src="/components/angular/angular.min.js"></script>
+	<script src="/components/angular-cookies/angular-cookies.min.js"></script>
+
+	<script src="/components/angularLocalStorage/src/angularLocalStorage.js"></script>
+
+	<script src="/components/jquery/dist/jquery.min.js"></script>
+
+	<script src="/components/lodash/dist/lodash.min.js"></script>
+	<script src="/components/restangular/dist/restangular.min.js"></script>
+
+
+	<script src="/models/flight.js"></script>
+	<script src="/models/airport.js"></script>
+
+	<script src="/app.js"></script>
+	<script src="/controllers/flight.js"></script>
+</head>
+
+<body ng-controller="FetchCtrl">
+  <img id="background" src="/icons/itinerary_background.png"/>
+  <button class = "button button-full button-assertive" ng-click="fetch(0)">Refresh for live data</button>
+  <div class = "card" ng-show="show"><center>No flights added. Please add a flight.</center></div>
+  <div class="card">
+    <div class="item item-text-wrap">
+      <div class = "row">
+        <div class = "col col-10">
+          <img id="alert" src="/icons/exclamation_point.png">
+        </div>
+        <div class = "col col-90">
+          <h3>{{carTimeDestination}}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-90 col-offset-10">
+          <p>{{carTimeResponse}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-repeat="response in firstFlight">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class = "row">
+          <div class = "col col-10">
+            <img id="green" src="/icons/green_checkmark.jpg">
+          </div>
+          <div class = "col col-90">
+            <h3>Weather at {{firstWeather[0].request.airport.fsCode}}</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{firstWeather[0].metar.temperatureCelsius * 9/5 + 32}}&deg; F</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{firstWeather[0].zoneForecast.dayForecasts[0].forecast}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class = "row">
+          <div class = "col col-10">
+            <img id="alert" src="/icons/exclamation_point.png">
+          </div>
+          <div class = "col col-90">
+            <h3>{{response.flightStatuses[0].carrierFsCode}} {{response.flightStatuses[0].flightNumber}}</h3>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Departure -- {{response.flightStatuses[0].departureAirportFsCode}}</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>{{response.flightStatuses[0].operationalTimes.publishedDeparture.dateLocal | date:'medium'}}</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3 style = "color: red">2 hours late</h3>
+            </div>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Arrival -- {{response.flightStatuses[0].arrivalAirportFsCode}}</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>{{response.flightStatuses[0].operationalTimes.publishedArrival.dateLocal | date:'medium'}}</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3 style = "color: red">1 hour and 30 minutes late</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class = "row">
+          <div class = "col col-10">
+            <img id="green" src="/icons/green_checkmark.jpg">
+          </div>
+          <div class = "col col-90">
+            <h3>Weather at {{firstWeather[1].request.airport.fsCode}}</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{Math.round(firstWeather[1].metar.temperatureCelsius * 9/5 + 32)}}&deg; F</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{firstWeather[1].zoneForecast.dayForecasts[0].forecast}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style = "z-index: 10"ng-repeat="response in restFlights">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class = "row">
+          <div class = "col col-10">
+            <img id="green" src="/icons/green_checkmark.jpg">
+          </div>
+          <div class = "col col-90">
+            <h3>{{response.flightStatuses[0].carrierFsCode}} {{response.flightStatuses[0].flightNumber}}</h3>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Departure -- {{response.flightStatuses[0].departureAirportFsCode}}</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>{{response.flightStatuses[0].operationalTimes.publishedDeparture.dateLocal | date:'medium'}}</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3>On time</h3>
+            </div>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col col-90 col-offset-10">
+            <p>Arrival -- {{response.flightStatuses[0].arrivalAirportFsCode}}</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "row">
+            <div class = "col-10">
+            </div>
+            <div class = "col">
+              <p>They Say</p>
+              <h3>{{response.flightStatuses[0].operationalTimes.publishedArrival.dateLocal | date:'medium'}}</h3>
+            </div>
+            <div class = "col">
+              <p>We Say</p>
+              <h3>On time</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class = "row">
+          <div class = "col col-10">
+            <img id="green" src="/icons/green_checkmark.jpg">
+          </div>
+          <div class = "col col-90">
+            <h3>Weather at {{restWeathers[$index].request.airport.fsCode}}</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{Math.round(restWeathers[$index].metar.temperatureCelsius * 9/5 + 32)}}&deg; F</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-90 col-offset-10">
+            <p>{{restWeathers[$index].zoneForecast.dayForecasts[0].forecast}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttondad"> 
+    <center>
+      <button id="addflight" class="button button-assertive" onClick="showForm();">
+        <i class = "icon ion-plus-circled"></i>  Flight #
+      </button>
+      <button class="button button-assertive">
+        <i class = "icon ion-plus-circled"></i>  Itinerary
+      </button>
+      <button class="button button-assertive">
+        <i class = "icon ion-plus-circled"></i>  Import
+      </button>
+    </center>
+  </div>
+<script>
+function showForm() {
+  //var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+  var webView = new steroids.views.WebView("http://localhost/flightnoform.html");
+  steroids.layers.push(webView);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+#vertical {
+	height: 50%;
+	border-left: 1px solid black;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+}
+
+#horizontal {
+	width: 100%;
+	border-top: 1px solid black;
+	position: absolute;
+	top: 75%;
+	left: 0%;
+	z-index: 10;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Splash Page</title>
+  <link rel="stylesheet" href="vendor/ionic/css/ionic.css" />
+  <link rel="stylesheet" href="stylesheets/splash.css" />
+  <script src="javascripts/splash.js"></script>
+  <script src="http://localhost/cordova.js"></script>
+  <script src="/components/steroids-js/steroids.js"></script>
+</head>
+<body>
+  <div id = "vertical"></div>
+  <div id = "horizontal"></div>
+  <div class ="col" style = "height: 50%;"><img style = "max-width: 100%; height: auto; padding-top: 20%;"src = "icons/splashHeader2.png"></div>
+  <div style = "height: 50%">
+    <div class = "row" style = "height: 50%">
+      <div class = "col" style = "height: 50%">
+        <a style = "text-align: center;" onclick="showForm()">
+          <div class = "row">
+            <div class = "col"><center><b style="color:#EF4E3A">My Travel</b></center></div>
+          </div>
+          <div class = "row">
+            <div class = "col" style = "height: 100%">
+              <center><img style="max-height: 100%; width: auto;" src = "icons/Itinerary@2x.png"></center>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class = "col" style = "height: 50%">
+        <a style = "text-align: center;" onclick="showAlerts()">
+          <div class = "row">
+            <div class = "col"><center><b style="color:#EF4E3A">Alerts</b></center></div>
+          </div>
+          <div class = "row">
+            <div class = "col" style = "height: 100%">
+              <center><img style="max-height: 100%; width: auto;" src = "icons/Alerts@2x.png"></center>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class = "row" style = "height: 50%">
+      <div class = "col" style = "height: 50%">
+        <a style = "text-align: center;" onclick="">
+          <div class = "row">
+            <div class = "col"><center><b style = "color: grey">My Flights</b></center></div>
+          </div>
+          <div class = "row">
+            <div class = "col" style = "height: 100%">
+              <center><img style="max-height: 100%; width: auto;" src = "icons/flightChecker@2x.png"></center>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class = "col" style = "height: 50%">
+        <a style = "text-align: center;" onclick="">
+          <div class = "row">
+            <div class = "col"><center><b style = "color: grey">My Airports</b></center></div>
+          </div>
+          <div class = "row">
+            <div class = "col" style = "height: 100%">
+              <center><img style="max-height: 100%; width: auto;" src = "icons/Configurations@2x.png"></center>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var f = [];
+    localStorage.setItem("flights", JSON.stringify(f));
+  </script>
+</body>
+</html>

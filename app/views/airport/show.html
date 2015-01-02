@@ -1,0 +1,26 @@
+
+<!--   <h2>{{airport.name}} ({{airport.fsCode}})</h2>
+  <p>Temperature: High:{{airport.temperature.high}}&deg;F | Low:{{airport.temperature.low}}&deg;F</p>
+  <p>Condition: {{airport.condition}}</p> -->
+<div ng-controller="ShowCtrl" class="padding">
+    <h2>{{ airport.name }}</h2>
+    <p>{{ airport.fscode }}</p>
+	<div class="card">
+	  	<div class="item item-text-wrap">
+	        <h3>Temperature</h3>
+        	<div class = "row">
+	        	<div class = "col">
+	        		<p>High</p> 
+	        		<h3>{{airport.temperature.high}}&deg;F</h3>
+	        	</div>
+	        	<div class = "col">
+	        		<p>Low</p>
+	        		<h3>{{airport.temperature.low}}&deg;F</h3>
+	        	</div>
+	        </div>
+	        <br>
+	        <h3>Condition</h3>
+	        <p>{{airport.condition}}</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div ng-controller="IndexCtrl">
+
+{{airportArray}}
+
+{{variable}}
+
+
+	<div class="card">
+	  <div class="item item-text-wrap" ng-click="open(airport.id)" ng-repeat="airport in airports">
+	    <div class = "row">
+	      <div class = "col" style = "background-color:green">
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	      </div>
+	      <div class = "col col-90">
+	        <b>{{ airport.name }}</b>
+	        <br><br>
+	        {{ airport.fsCode }}
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+

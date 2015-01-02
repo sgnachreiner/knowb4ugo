@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "AA 4334",
+    "model":"747",
+    "date": "11/16/2014",
+    "airline": "American Airlines",
+    "tailnumber": "N950NN",
+    "departureAirportFsCode": "DTW",
+    "arrivalAirportFsCode": "SFO",
+    "reportedDepartureTime": "7:50am",
+    "estimatedDepartureTime": "9:20am",
+    "reportedArrivalTime": "3:00pm",
+    "estimatedArrivalTime": "3:20pm",
+    "timeOfLastLocation": "11:26pm",
+    "lastLocationLat": 40.8167,
+    "lastLocationLon": -73.85,
+    "status": "57 min late",
+    "statusExplanation": "Typically flights that connect in Newark Liberty International (EWR) have high delay issues.",
+    "performance":{
+        "total":"62",
+        "delayed":"3"
+    }
+
+  },
+  {
+    "id": 2,
+    "name": "AA 6789",
+    "model": "787",
+    "date": "11/16/2014",
+    "airline": "American Airlines",
+    "tailnumber": "N950NN",
+    "departureAirportFsCode": "SFO",
+    "arrivalAirportFsCode": "PVG",
+    "reportedDepartureTime": "1:30pm",
+    "estimatedDepartureTime": "3:20pm",
+    "reportedArrivalTime": "4:00pm",
+    "estimatedArrivalTime": "4:20pm",
+    "timeOfLastLocation": "11:26:08pm",
+    "lastLocationLat": 40.8167,
+    "lastLocationLon": -73.85,
+    "status": "Grounded; Snow",
+    "statusExplanation": "This flight has pending status due to weather conditions. An east coast snow storm dumped 5 inches.",  
+    "performance":{
+        "total":"42",
+        "delayed":"1"
+    }
+  }
+]
+
